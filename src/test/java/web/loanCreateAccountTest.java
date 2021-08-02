@@ -16,17 +16,17 @@ import static org.junit.Assert.assertEquals;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class loanCreateAccountTest extends SeleniumTestSetup {
-    Faker faker = new Faker(new Locale("en-US"));
+    static Faker faker = new Faker();
 
 
     //setting variable that will be reused
-    String email = "candidates+" + faker.number().randomNumber(4, true) + "@upgrade-challenge.com";
+    static String email = "candidates+" + faker.number().randomNumber(4, true) + "@upgrade-challenge.com";
+
     //due to faker limitation sometime does not  include lowercase nor number i will force a  random lowercase and a random number at the end
-    String password = faker.internet().password(6, 7, true, false) +
-            (char) (new Random().nextInt(26) + 'a') + String.valueOf(faker.number().numberBetween(1, 9));
+    static String password = faker.internet().password(6, 7, true, false) +
+                        (char) (new Random().nextInt(26) + 'a') + String.valueOf(faker.number().numberBetween(1, 9));
 
-
-    String loanAmount = obj.getProperty("loanAmount");
+    static String loanAmount = obj.getProperty("loanAmount");
 
     @Test
     public void step_0001_signUp() throws Exception {
@@ -56,6 +56,8 @@ public class loanCreateAccountTest extends SeleniumTestSetup {
     @Test
     public void step_0004_setAccount() {
         PersonalLoanCreateAccountPage personalLoanCreateAccountPage = new PersonalLoanCreateAccountPage();
+        System.out.println(email);
+        System.out.println(password);
         personalLoanCreateAccountPage.setAccount(email, password);
 
         QualifyPage qualifyPage = new QualifyPage();
@@ -74,12 +76,13 @@ public class loanCreateAccountTest extends SeleniumTestSetup {
         driver.get(obj.getProperty("loanPageUrl"));
 
         PersonalLoanLoginPage personalLoanLoginPage = new PersonalLoanLoginPage();
-
+        System.out.println((email));
+        System.out.println(password);
         personalLoanLoginPage.login(email, password);
 
         //Loan Amount validation
         QualifyPage qualifyPage = new QualifyPage();
-        assertEquals(qualifyPage.getLoanAmount().getText(), loanAmount);
+        assertEquals(obj.getProperty("formattedLoanAmount"), qualifyPage.getLoanAmount().getText());
     }
 
 }

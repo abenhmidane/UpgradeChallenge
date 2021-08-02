@@ -17,7 +17,7 @@ public class QualifyPage extends FrameworkInitialize {
     WebDriverWait wait = new WebDriverWait(driver, 30);
 
     private WebElement _menu = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[aria-label=\"Open Site Menu\"]")));
-    private WebElement _signOut = driver.findElement(By.cssSelector("[href=\"/funnel/logout\"]"));
+    private WebElement _signOut = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[href=\"/funnel/logout\"]")));
     private WebElement loanAmount = wait.until(ExpectedConditions.presenceOfElementLocated((By.cssSelector("[data-auto=\"userLoanAmount\"]"))));
 
     public WebElement getLoanAmount() {
