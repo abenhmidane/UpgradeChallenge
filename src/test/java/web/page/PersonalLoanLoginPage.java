@@ -29,7 +29,7 @@ public class PersonalLoanLoginPage extends FrameworkInitialize {
         return _password;
     }
 
-    public  void login(String email, String password) {
+    public void login(String email, String password) {
         this.get_username().sendKeys(email);
         this.get_password().sendKeys(password);
         this.get_signInButton().click();

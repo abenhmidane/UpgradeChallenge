@@ -3,7 +3,6 @@ package util;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -11,7 +10,7 @@ import java.io.IOException;
 /**
  * @Before / @After class
  */
-public class ApiTestSetup  extends FrameworkInitialize{
+public class ApiTestSetup extends FrameworkInitialize {
 
 
     @BeforeClass

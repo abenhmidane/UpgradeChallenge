@@ -3,7 +3,6 @@ package web.page;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import util.FrameworkInitialize;
 
@@ -56,7 +55,6 @@ public class PersonalLoanBorrowerIncomePage extends FrameworkInitialize {
         } catch (Exception exception) {
             System.out.println("Element does not exist! or Timed out");
         }
-
 
 
     }
